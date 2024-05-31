@@ -1,18 +1,9 @@
 <?php
 
-
 define("DB_SERVER", 'localhost');
 define("DB_USERNAME", 'root');
 define("DB_PASSWORD", '');
 define("DB_DATABASE", 'employee_management');
-
-$connection = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
-
-if (!$connection) {
-    echo "connection error";
-} else {
-    echo "connection success";
-}
 
 class Connection
 {
@@ -36,13 +27,25 @@ class Connection
 
         if ($this->conn->connect_error) {
             echo "Connection error: ";
-        } else {
-            echo "Connection Success";
-        }
+        } 
     }
 
-    public function login()
-    {
+   
+}
 
+class login extends Connection{
+   
+    public function login($email, $password)
+    {
+          $check_login = "SELECT * FROM WHERE email = `$email` ";
+
+          if($check_login)
+          {
+              echo "Login Successfully";
+          }elseif($check_login !== $password){
+            echo "Password Not Matching";
+          }else{
+            echo "Login sucessfully";
+          }
     }
 }

@@ -14,24 +14,38 @@
 </head>
 
 <body class="bg-dark">
-<?php require_once('./connection.php'); ?>
+<?php 
+session_start();
+
+require_once('./connection.php');
+
+  new Connection();
+
+  if(isset($_POST['submit']))
+  {
+    $email = $_POST['email'];
+    
+    $password = $_POST['password'];
+
+  }
+?>
     <section>
         <div class="container mt-5">
             <form method="POST" >
                 <div class="form-group">
                     <label for="exampleInputEmail1" class="text-white">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
+                    <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
 
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1" class="text-white">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+                    <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
                 </div>
                 <div class="form-group form-check">
                     <input type="checkbox" class="form-check-input" id="exampleCheck1" checked>
                     <label class="form-check-label text-white" for="exampleCheck1" >Check me out</label>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" name="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
     </section>
